@@ -12,3 +12,5 @@ The `data` directory is mounted to the mongo container, and will contain all the
 The `seed` directory contains scripts that will be executed from `/docker-entrypoint-initdb.d` when the mongo container starts. The scripts are executed in alphabet sequence of their names. The first script creates the db user for traveler application. The second script creates traveler users in the traveler db.
 
 ## usage
+
+Run `docker-compose up` to build and start the services. You can access mongo express at <http://localhost:8081>. The username is `traveler`, and password is `travelerpass`.

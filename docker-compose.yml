@@ -1,0 +1,36 @@
+version: '3'
+networks:
+  default:
+    external:
+      name: traveler-dev
+services:
+  mongo:
+    image: "mongo:3.4"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=rootspass
+      - MONGO_INITDB_DATABASE=traveler
+    command: --smallfiles
+    container_name: "traveler-mongodb"
+    volumes:
+      # mapping for the db setup script
+      - ./seed:/docker-entrypoint-initdb.d
+      # mapping for the db location
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+  mongo-express:
+    image: mongo-express
+    restart: unless-stopped
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=rootspass
+      - ME_CONFIG_MONGODB_AUTH_DATABASE=admin
+      - ME_CONFIG_BASICAUTH_USERNAME=traveler
+      - ME_CONFIG_BASICAUTH_PASSWORD=travelerpass
+    depends_on:
+      - "mongo"
+
