@@ -14,3 +14,4 @@ The `seed` directory contains scripts that will be executed from `/docker-entryp
 ## usage
 
 Run `docker-compose up` to build and start the services. You can access mongo express at <http://localhost:8081>. The username is `traveler`, and password is `travelerpass`.
+
