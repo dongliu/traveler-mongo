@@ -1,3 +1,7 @@
 # the data dir
 data/*
 !data/README.md
+
+# the backup die
+backup/*
+!backup/README.md

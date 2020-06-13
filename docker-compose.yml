@@ -17,6 +17,10 @@ services:
       - ./seed:/docker-entrypoint-initdb.d
       # mapping for the db location
       - ./data:/data/db
+      # backup dir
+      - ./backup:/backup
+      # script dir
+      - ./script:/script
     ports:
       - "27017:27017"
   mongo-express:

@@ -1,0 +1,1 @@
+This directory keep the backup from the scrip/backup.sh
