@@ -28,6 +28,17 @@ The `script` directory contains `backup.sh` used for backup
 
 ## usage
 
+Clone this repo to your local environment. Make sure you have the `traveler-dev` network in the docker. 
+```
+docker network list
+```
+
+If not, run the following in your console to create the network.
+
+```
+docker network create -d bridge --subnet 172.18.1.0/24 traveler-dev
+```
+
 Run `docker-compose up` to build and start the services. You can access mongo
 express at <http://localhost:8081>. The username is `traveler`, and password is
 `travelerpass`.
