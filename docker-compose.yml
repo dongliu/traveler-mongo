@@ -1,8 +1,8 @@
 version: '3'
 networks:
   default:
-    external:
-      name: traveler-dev
+    external: true
+    name: traveler-dev
 services:
   mongo:
     image: "mongo:3.4"
