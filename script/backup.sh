@@ -1,16 +1,16 @@
 #!/bin/bash
 
 DB=traveler
-# the 
+# the directory to hold back up files, change it for your env
 BACKUP_DIR=/backup
-DATE=`date +"%F-%k-%M-%S"`
+DATE=`date +%Y%m%d_%H%M%S`
 
 if [ ! -d "$BACKUP_DIR" ]; then
   mkdir -p $BACKUP_DIR
 fi
 
-mongodump -u traveler -p travelerpassword --authenticationDatabase admin --db $DB --out /tmp/${DB}db-$DATE
-tar czf $BACKUP_DIR/${DB}db-$DATE.tgz -C /tmp ${DB}db-$DATE
-rm -rf /tmp/${DB}db-$DATE
+mongodump -u traveler -p travelerpassword --authenticationDatabase admin --db $DB --out /tmp/${DB}db_$DATE
+tar czf $BACKUP_DIR/${DB}db_$DATE.tgz -C /tmp ${DB}db_$DATE
+rm -rf /tmp/${DB}db_$DATE
 
 find $BACKUP_DIR -mtime +7 -exec rm {} \;
